@@ -1,6 +1,6 @@
 import streamlit as st
 
-from backend.services.profile_storage import save_profile
+from backend.storage.profile_storage import save_profile
 
 
 def show_onboarding():

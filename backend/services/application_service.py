@@ -1,4 +1,4 @@
-from backend.services.application_storage import (
+from backend.storage.application_storage import (
     add_application,
     load_applications,
     save_applications
