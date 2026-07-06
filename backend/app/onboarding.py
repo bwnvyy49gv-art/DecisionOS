@@ -79,7 +79,10 @@ def show_onboarding():
 
     goal = st.text_area(
         "Was wünschst du dir langfristig?",
-        placeholder="Zum Beispiel: einen sinnvollen Job, gute Sicherheit, Forschung, gutes Gehalt, Selbstständigkeit..."
+        placeholder=(
+            "Zum Beispiel: einen sinnvollen Job, gute Sicherheit, "
+            "Forschung, gutes Gehalt, Selbstständigkeit..."
+        )
     )
 
     if st.button("Weiter zum Dashboard ➜", use_container_width=True):

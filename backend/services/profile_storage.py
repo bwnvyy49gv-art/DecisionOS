@@ -1,11 +1,13 @@
 import json
 from pathlib import Path
 
+
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 PROFILE_FILE = DATA_DIR / "user_profile.json"
 
 
 def save_profile(profile_data):
+    """Speichert das Nutzerprofil lokal."""
     DATA_DIR.mkdir(exist_ok=True)
 
     with open(PROFILE_FILE, "w", encoding="utf-8") as file:
@@ -13,6 +15,7 @@ def save_profile(profile_data):
 
 
 def load_profile():
+    """Lädt das Nutzerprofil aus der lokalen JSON-Datei."""
     if not PROFILE_FILE.exists():
         return None
 

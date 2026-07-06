@@ -8,6 +8,7 @@ APPLICATIONS_FILE = DATA_DIR / "applications.json"
 
 
 def load_applications():
+    """Lädt alle Bewerbungen aus der JSON-Datei."""
     if not APPLICATIONS_FILE.exists():
         return []
 
@@ -16,6 +17,7 @@ def load_applications():
 
 
 def save_applications(applications):
+    """Speichert alle Bewerbungen lokal."""
     DATA_DIR.mkdir(exist_ok=True)
 
     with open(APPLICATIONS_FILE, "w", encoding="utf-8") as file:
@@ -23,6 +25,7 @@ def save_applications(applications):
 
 
 def add_application(company, job_title, location, link, status, notes):
+    """Fügt eine neue Bewerbung hinzu."""
     applications = load_applications()
 
     new_application = {

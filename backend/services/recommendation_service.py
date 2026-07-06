@@ -1,6 +1,5 @@
 def generate_first_direction(profile):
     interests = profile.get("interests", [])
-    challenge = profile.get("challenge", [])
     mood = profile.get("mood", "")
 
     recommendations = []
