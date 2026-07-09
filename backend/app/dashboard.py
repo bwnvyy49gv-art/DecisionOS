@@ -4,6 +4,7 @@ from backend.storage.profile_storage import load_profile
 from backend.services.recommendation_service import generate_first_direction
 from backend.core.decision_engine import DecisionEngine
 from backend.core.roadmap_engine import RoadmapEngine
+from backend.core.portfolio_engine import PortfolioEngine
 
 def show_dashboard():
     profile = st.session_state.get("profile")
@@ -115,6 +116,17 @@ def show_dashboard():
         with st.expander(item["phase"]):
             st.write(f"**Aufgabe:** {item['task']}")
             st.write(f"**Warum:** {item['why']}")
+
+    st.write("---")
+
+    st.subheader("Erstes Portfolio-Projekt")
+
+    projects = PortfolioEngine.suggest_first_projects(profile)
+
+    for project in projects[:2]:
+        st.write(f"### {project['title']}")
+        st.write(project["description"])
+        st.write(f"**Ergebnis:** {project['output']}")
 
     if st.button("Profil neu erstellen", use_container_width=True):
         st.session_state.page = "onboarding"
