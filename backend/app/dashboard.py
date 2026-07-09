@@ -3,6 +3,7 @@ import streamlit as st
 from backend.storage.profile_storage import load_profile
 from backend.services.recommendation_service import generate_first_direction
 from backend.core.decision_engine import DecisionEngine
+from backend.core.roadmap_engine import RoadmapEngine
 
 def show_dashboard():
     profile = st.session_state.get("profile")
@@ -103,6 +104,17 @@ def show_dashboard():
 
     for step in top_recommendation["next_steps"]:
         st.write(f"→ {step}")
+
+    st.write("---")
+
+    st.subheader("Deine erste Mini-Roadmap")
+
+    roadmap = RoadmapEngine.create_first_roadmap(profile)
+
+    for item in roadmap:
+        with st.expander(item["phase"]):
+            st.write(f"**Aufgabe:** {item['task']}")
+            st.write(f"**Warum:** {item['why']}")
 
     if st.button("Profil neu erstellen", use_container_width=True):
         st.session_state.page = "onboarding"
