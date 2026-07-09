@@ -20,12 +20,13 @@ def show_dashboard():
 
         return
 
-    name = profile.get("name", "du")
-    status = profile.get("status", "nicht angegeben")
-    mood = profile.get("mood", "nicht angegeben")
-    goal = profile.get("goal", "Noch kein Ziel angegeben.")
-    challenge = profile.get("challenge", [])
-    interests = profile.get("interests", [])
+    name = profile.name or "du"
+    status = profile.status or "nicht angegeben"
+    mood = profile.mood or "nicht angegeben"
+    goal = profile.goal or "Noch kein Ziel angegeben."
+    challenge = profile.challenge
+    interests = profile.interests
+    values = profile.values
 
     st.title("🏠 Dein DecisionOS Dashboard")
 
@@ -53,6 +54,13 @@ def show_dashboard():
     else:
         st.write("Noch keine Interessen angegeben.")
 
+    st.subheader("Deine Werte")
+
+    if values:
+        st.write(", ".join(values))
+    else:
+        st.write("Noch keine Werte angegeben.")
+
     st.write("---")
 
     st.subheader("Deine erste Orientierung")
@@ -77,15 +85,6 @@ def show_dashboard():
 
     for step in top_recommendation["next_steps"]:
         st.write(f"→ {step}")
-
-    if len(recommendations) > 1:
-        with st.expander("Weitere mögliche Richtungen anzeigen"):
-            for recommendation in recommendations[1:]:
-                st.write(f"### {recommendation['title']} — {recommendation['score']} %")
-                for reason in recommendation["why"]:
-                    st.write(f"✓ {reason}")
-
-    st.write("---")
 
     if st.button("Profil neu erstellen", use_container_width=True):
         st.session_state.page = "onboarding"

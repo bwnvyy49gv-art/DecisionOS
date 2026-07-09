@@ -1,5 +1,6 @@
 import streamlit as st
 
+from backend.models.user_profile import UserProfile
 from backend.storage.profile_storage import save_profile
 
 
@@ -77,6 +78,27 @@ def show_onboarding():
         ]
     )
 
+    st.subheader("Was ist dir bei deinem zukünftigen Weg wichtig?")
+
+    values = st.multiselect(
+        "Wähle alles aus, was für dich relevant ist.",
+        [
+        "Sicherheit",
+        "Gehalt",
+        "Sinn",
+        "Kreativität",
+        "Freiheit",
+        "Familie",
+        "Gesellschaftlicher Beitrag",
+        "Nachhaltigkeit",
+        "Forschung",
+        "Menschen helfen",
+        "Politik mitgestalten",
+        "Selbstständigkeit",
+        "Work-Life-Balance"
+        ]
+    )
+
     goal = st.text_area(
         "Was wünschst du dir langfristig?",
         placeholder=(
@@ -86,18 +108,19 @@ def show_onboarding():
     )
 
     if st.button("Weiter zum Dashboard ➜", use_container_width=True):
-        profile_data = {
-            "name": name,
-            "status": status,
-            "mood": mood,
-            "challenge": challenge,
-            "interests": interests,
-            "goal": goal
-        }
+        profile = UserProfile(
+            name=name,
+            status=status,
+            mood=mood,
+            challenge=challenge,
+            interests=interests,
+            values=values,
+            goal=goal
+        )
 
-        save_profile(profile_data)
+        save_profile(profile)
 
-        st.session_state.profile = profile_data
+        st.session_state.profile = profile
         st.session_state.page = "dashboard"
 
         st.rerun()

@@ -9,6 +9,7 @@ class UserProfile:
     goal: str = ""
     challenge: list[str] = field(default_factory=list)
     interests: list[str] = field(default_factory=list)
+    values: list[str] = field(default_factory=list)
 
     def to_dict(self):
         return {
@@ -17,7 +18,8 @@ class UserProfile:
             "mood": self.mood,
             "goal": self.goal,
             "challenge": self.challenge,
-            "interests": self.interests
+            "interests": self.interests,
+            "values": self.values
         }
 
     @staticmethod
@@ -28,5 +30,6 @@ class UserProfile:
             mood=data.get("mood", ""),
             goal=data.get("goal", ""),
             challenge=data.get("challenge", []),
-            interests=data.get("interests", [])
+            interests=data.get("interests", []),
+            values=data.get("values", [])
         )

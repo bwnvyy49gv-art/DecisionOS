@@ -1,72 +1,116 @@
+from backend.core.decision_engine import DecisionEngine
+
+
 def generate_first_direction(profile):
-    interests = profile.get("interests", [])
-    mood = profile.get("mood", "")
+    analysis = DecisionEngine.analyze_profile(profile)
+
+    themes = analysis["themes"]
+    support_needs = analysis["support_needs"]
 
     recommendations = []
 
-    if "Energie" in interests or "Nachhaltigkeit" in interests or "Umwelt" in interests:
-        recommendations.append({
-            "title": "Energie, Umwelt & Nachhaltigkeit",
-            "score": 85,
-            "why": [
-                "Du hast Interesse an Energie, Umwelt oder Nachhaltigkeit angegeben.",
-                "Diese Richtung bietet viele Zukunftsthemen.",
-                "Sie verbindet Technik, gesellschaftlichen Nutzen und langfristige Entwicklung."
-            ],
-            "next_steps": [
-                "Grundlagen Energie- und Verfahrenstechnik anschauen",
-                "Python oder Excel für technische Datenanalyse lernen",
-                "Nach Firmen in Energie, Wasserstoff, Batterie oder Climate Tech suchen"
-            ]
-        })
+    for theme in themes:
+        if theme == "Klima, Energie & Nachhaltigkeit":
+            recommendations.append({
+                "title": "Klima, Energie & Nachhaltigkeit",
+                "score": 88,
+                "why": [
+                    "Deine Interessen zeigen eine Nähe zu Energie, Umwelt oder Nachhaltigkeit.",
+                    "Diese Richtung verbindet gesellschaftlichen Beitrag mit technischen oder organisatorischen Aufgaben.",
+                    "Sie kann über Studium, Ausbildung, Politik, NGO-Arbeit oder Industrie verfolgt werden."
+                ],
+                "next_steps": [
+                    "Unterscheide technische, politische und soziale Wege in diesem Feld.",
+                    "Schau dir Energie-, Umwelt- und Nachhaltigkeitsberufe an.",
+                    "Starte mit einem kleinen Lernprojekt oder einer Recherche zu einem konkreten Problem."
+                ],
+                "support_note": _build_support_note(support_needs)
+            })
 
-    if "Software" in interests or "KI" in interests or "Robotik" in interests:
-        recommendations.append({
-            "title": "Software, KI & Automatisierung",
-            "score": 82,
-            "why": [
-                "Du hast Interesse an Software, KI oder Robotik angegeben.",
-                "Diese Richtung ist stark zukunftsorientiert.",
-                "Sie passt gut zu Menschen, die gerne systematisch Probleme lösen."
-            ],
-            "next_steps": [
-                "Python-Grundlagen weiterlernen",
-                "Ein kleines GitHub-Projekt starten",
-                "Datenbanken und APIs verstehen"
-            ]
-        })
+        elif theme == "Software, KI & Automatisierung":
+            recommendations.append({
+                "title": "Software, KI & Automatisierung",
+                "score": 84,
+                "why": [
+                    "Deine Interessen zeigen eine Nähe zu Software, KI oder Robotik.",
+                    "Diese Richtung eignet sich gut für Menschen, die systematisch Probleme lösen wollen.",
+                    "Sie kann mit Studium, Ausbildung, Quereinstieg oder eigenen Projekten begonnen werden."
+                ],
+                "next_steps": [
+                    "Python-Grundlagen weiterlernen.",
+                    "Ein kleines GitHub-Projekt dokumentieren.",
+                    "Datenbanken, APIs und einfache Automatisierung verstehen."
+                ],
+                "support_note": _build_support_note(support_needs)
+            })
 
-    if "Chemie" in interests or "Biologie" in interests or "Medizin" in interests:
-        recommendations.append({
-            "title": "Life Science, Chemie & Forschung",
-            "score": 78,
-            "why": [
-                "Du hast Interesse an Chemie, Biologie oder Medizin angegeben.",
-                "Diese Richtung passt gut zu Analyse, Labor, Forschung und Entwicklung.",
-                "Sie kann sowohl akademisch als auch industriell verfolgt werden."
-            ],
-            "next_steps": [
-                "Mögliche Berufsbilder in Forschung und Industrie vergleichen",
-                "Labor- und Datenauswertungskompetenzen ausbauen",
-                "Passende Praktika oder Werkstudentenstellen suchen"
-            ]
-        })
+        elif theme == "Life Science, Chemie & Forschung":
+            recommendations.append({
+                "title": "Life Science, Chemie & Forschung",
+                "score": 82,
+                "why": [
+                    "Deine Interessen zeigen Nähe zu Chemie, Biologie, Medizin oder Forschung.",
+                    "Diese Richtung passt zu Analyse, Experimenten und wissenschaftlichem Denken.",
+                    "Sie kann in Labor, Industrie, Universität oder angewandter Forschung stattfinden."
+                ],
+                "next_steps": [
+                    "Vergleiche Labor-, Industrie- und Forschungswege.",
+                    "Baue Datenanalyse- und Dokumentationsskills aus.",
+                    "Suche nach Praktika, Werkstudentenstellen oder Projekten."
+                ],
+                "support_note": _build_support_note(support_needs)
+            })
 
-    if "Handwerk" in interests:
-        recommendations.append({
-            "title": "Handwerk, Technik & praktische Arbeit",
-            "score": 80,
-            "why": [
-                "Du hast Interesse an praktischer Arbeit angegeben.",
-                "Diese Richtung bietet klare Ausbildungswege und greifbare Ergebnisse.",
-                "Sie kann langfristig zu Meister, Techniker, Selbstständigkeit oder Projektleitung führen."
-            ],
-            "next_steps": [
-                "Ausbildungsberufe und Technikerwege vergleichen",
-                "Praktische Tätigkeiten testen",
-                "Betriebe in der Region recherchieren"
-            ]
-        })
+        elif theme == "Kreativität, Gestaltung & Kultur":
+            recommendations.append({
+                "title": "Kreativität, Gestaltung & Kultur",
+                "score": 82,
+                "why": [
+                    "Deine Interessen zeigen eine kreative oder gestalterische Richtung.",
+                    "Kunst, Design und Kultur sind wichtige gesellschaftliche Bereiche.",
+                    "Diese Wege können frei, angestellt, projektbasiert oder unternehmerisch verfolgt werden."
+                ],
+                "next_steps": [
+                    "Sammle Arbeitsproben in einem Portfolio.",
+                    "Vergleiche freie, akademische und berufliche Ausbildungswege.",
+                    "Teste ein kleines kreatives Projekt mit sichtbarem Ergebnis."
+                ],
+                "support_note": _build_support_note(support_needs)
+            })
+
+        elif theme == "Gesellschaft, Wirtschaft & Politik":
+            recommendations.append({
+                "title": "Gesellschaft, Wirtschaft & Politik",
+                "score": 80,
+                "why": [
+                    "Deine Interessen zeigen Nähe zu gesellschaftlichen, wirtschaftlichen oder politischen Themen.",
+                    "Diese Richtung passt zu Menschen, die Systeme verstehen, gestalten oder verändern wollen.",
+                    "Mögliche Wege sind Verwaltung, NGOs, Parteien, Beratung, Journalismus oder Unternehmen."
+                ],
+                "next_steps": [
+                    "Unterscheide politische, wirtschaftliche und soziale Rollen.",
+                    "Engagiere dich testweise in einem Projekt, Verein oder einer Initiative.",
+                    "Baue Kommunikations-, Analyse- und Organisationsskills aus."
+                ],
+                "support_note": _build_support_note(support_needs)
+            })
+
+        elif theme == "Handwerk, Technik & praktische Arbeit":
+            recommendations.append({
+                "title": "Handwerk, Technik & praktische Arbeit",
+                "score": 83,
+                "why": [
+                    "Deine Interessen zeigen Nähe zu praktischer Arbeit.",
+                    "Handwerk und technische Ausbildungswege sind gesellschaftlich und wirtschaftlich zentral.",
+                    "Diese Richtung kann zu Meister, Techniker, Selbstständigkeit oder Projektleitung führen."
+                ],
+                "next_steps": [
+                    "Vergleiche Ausbildungsberufe und Technikerwege.",
+                    "Teste praktische Tätigkeiten über Praktika oder Projekte.",
+                    "Recherchiere Betriebe und reale Arbeitsalltage."
+                ],
+                "support_note": _build_support_note(support_needs)
+            })
 
     if not recommendations:
         recommendations.append({
@@ -78,24 +122,30 @@ def generate_first_direction(profile):
                 "Der nächste sinnvolle Schritt ist, Interessen und mögliche Wege besser zu erkunden."
             ],
             "next_steps": [
-                "3 Themen auswählen, die dich neugierig machen",
-                "Zu jedem Thema ein kurzes Video oder einen Artikel anschauen",
-                "Notieren, was dich daran anspricht oder abschreckt"
-            ]
+                "Wähle drei Themen aus, die dich neugierig machen.",
+                "Schau dir zu jedem Thema einen realistischen Berufsalltag an.",
+                "Notiere, was dich daran anspricht oder abschreckt."
+            ],
+            "support_note": _build_support_note(support_needs)
         })
 
-    if mood in ["Überfordert", "Orientierungslos", "Druck von außen"]:
-        for recommendation in recommendations:
-            recommendation["support_note"] = (
-                "Du musst das nicht sofort entscheiden. "
-                "Der wichtigste Schritt ist jetzt nicht die perfekte Wahl, "
-                "sondern eine erste Richtung, die du testen kannst."
-            )
-    else:
-        for recommendation in recommendations:
-            recommendation["support_note"] = (
-                "Das ist kein endgültiger Weg, sondern ein erster Vorschlag, "
-                "den du weiter prüfen und anpassen kannst."
-            )
-
     return sorted(recommendations, key=lambda item: item["score"], reverse=True)
+
+
+def _build_support_note(support_needs):
+    if "Orientierung und emotionale Entlastung" in support_needs:
+        return (
+            "Du musst gerade keine perfekte Entscheidung treffen. "
+            "Wichtig ist erstmal eine Richtung, die du testen kannst."
+        )
+
+    if "Skill-Entwicklung" in support_needs:
+        return (
+            "Der nächste Schritt muss nicht riesig sein. "
+            "Ein kleiner Skill-Aufbau kann schon viel Klarheit bringen."
+        )
+
+    return (
+        "Das ist kein endgültiger Weg, sondern ein erster Vorschlag, "
+        "den du weiter prüfen und anpassen kannst."
+    )
