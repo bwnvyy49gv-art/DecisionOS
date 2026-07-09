@@ -1,42 +1,154 @@
-# DecisionOS Vision
+# 🧭 DecisionOS Vision
 
 ## Mission
 
-DecisionOS helps people make confident career decisions through transparent, explainable and personalized guidance.
+DecisionOS hilft Menschen dabei, Orientierung für ihre berufliche Zukunft zu finden.
 
-## Vision
+Nicht indem Entscheidungen für sie getroffen werden,
+sondern indem Möglichkeiten verständlich gemacht,
+Wege aufgezeigt und Entwicklung begleitet wird.
 
-DecisionOS becomes the trusted companion for lifelong career decisions.
+Unsere Aufgabe ist es, Unsicherheit in Klarheit zu verwandeln.
 
-## Motto
+---
 
-Navigate your future. Grow with confidence.
+# Unsere Philosophie
 
-## Core Goal
+Jeder Mensch hat unterschiedliche Ziele.
 
-Transform uncertainty into orientation.
+Nicht jeder möchte Unternehmer werden.
 
-## Core Principles
+Nicht jeder möchte studieren.
 
-- DecisionOS recommends, never decides.
-- Every recommendation must be explainable.
-- Every career path deserves equal respect.
-- Users stay in control.## 30-Minute Outcome
+Nicht jeder möchte Karriere machen.
 
-## 30-Minute Outcome
+Nicht jeder möchte die Welt verändern.
 
-After 30 minutes with DecisionOS, users should not feel finished.
+Und genau das ist völlig in Ordnung.
 
-They should feel relieved, oriented and capable of taking the next step.
+DecisionOS bewertet Menschen nicht nach Einkommen,
+Prestige oder gesellschaftlichem Status.
 
-A successful first session means the user thinks:
+DecisionOS hilft Menschen dabei,
+den Weg zu finden,
+der zu ihren Werten,
+ihren Fähigkeiten
+und ihrem gewünschten Leben passt.
 
-"Maybe this path could actually fit me."
+---
 
-or
+# Unser Menschenbild
 
-"Okay, it is not as overwhelming as I thought. I now have a direction I can start developing toward."
+Jede Gesellschaft braucht
 
-DecisionOS should turn uncertainty into a first concrete direction.
+- Forscher
+- Ingenieure
+- Handwerker
+- Künstler
+- Lehrer
+- Pflegekräfte
+- Unternehmer
+- Sozialarbeiter
+- Politiker
+- Designer
+- Wissenschaftler
+- Programmierer
+- Landwirte
 
-Jede Gesellschaft braucht Forscher, Künstler, Handwerker, Unternehmer, Lehrer, Pflegekräfte, Politiker und Ingenieure. DecisionOS hilft nicht dabei, den "besten" Beruf zu finden, sondern den richtigen für den einzelnen Menschen.
+Jeder dieser Berufe ist wertvoll.
+
+DecisionOS erstellt keine Rangliste von Berufen.
+
+DecisionOS sucht den richtigen Weg für den jeweiligen Menschen.
+
+---
+
+# Unser Ziel
+
+Nach 30 Minuten mit DecisionOS soll der Nutzer denken:
+
+"Geil, das könnte passen."
+
+oder
+
+"Okay.
+Es ist gar nicht so schlimm.
+Ich habe jetzt eine Richtung,
+in der ich mich weiterentwickeln kann."
+
+---
+
+# Unser Ansatz
+
+Wir fragen nicht zuerst:
+
+"Welchen Beruf möchtest du?"
+
+Wir fragen:
+
+- Wer bist du?
+- Was ist dir wichtig?
+- Welche Probleme möchtest du lösen?
+- Wie möchtest du leben?
+- Welche Tätigkeiten machen dir Spaß?
+- Welche Fähigkeiten möchtest du entwickeln?
+
+Erst danach suchen wir passende Wege.
+
+---
+
+# Unsere Grundwerte
+
+✓ Ehrlichkeit
+
+✓ Transparenz
+
+✓ Datenschutz
+
+✓ Wissenschaftlichkeit
+
+✓ Nachvollziehbarkeit
+
+✓ Offenheit
+
+✓ Vielfalt
+
+✓ Lebenslanges Lernen
+
+✓ Eigenverantwortung
+
+✓ Respekt
+
+---
+
+# Datenschutz
+
+DecisionOS ist Local First.
+
+Alle persönlichen Daten gehören ausschließlich dem Nutzer.
+
+Standardmäßig werden keine persönlichen Daten in einer Cloud gespeichert.
+
+Keine Daten werden ohne ausdrückliche Zustimmung übertragen.
+
+---
+
+# Unsere Vision
+
+DecisionOS soll Menschen über viele Jahre begleiten.
+
+Von der Schule
+
+über Ausbildung oder Studium
+
+bis hin zu Beruf,
+
+Neuorientierung,
+
+Weiterbildung
+
+und lebenslangem Lernen.
+
+DecisionOS soll kein Jobportal sein.
+
+DecisionOS soll ein persönliches Orientierungssystem werden.
