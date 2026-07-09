@@ -5,6 +5,7 @@ from backend.services.recommendation_service import generate_first_direction
 from backend.core.decision_engine import DecisionEngine
 from backend.core.roadmap_engine import RoadmapEngine
 from backend.core.portfolio_engine import PortfolioEngine
+from backend.core.skill_engine import SkillEngine
 
 def show_dashboard():
     profile = st.session_state.get("profile")
@@ -127,6 +128,15 @@ def show_dashboard():
         st.write(f"### {project['title']}")
         st.write(project["description"])
         st.write(f"**Ergebnis:** {project['output']}")
+
+        st.write("---")
+
+    st.subheader("Erste Skills, die dir helfen könnten")
+
+    skills = SkillEngine.suggest_skills(profile)
+
+    for skill in skills:
+        st.write(f"✓ {skill}")
 
     if st.button("Profil neu erstellen", use_container_width=True):
         st.session_state.page = "onboarding"
