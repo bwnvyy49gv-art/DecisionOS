@@ -2,7 +2,7 @@ import streamlit as st
 
 from backend.storage.profile_storage import load_profile
 from backend.services.recommendation_service import generate_first_direction
-
+from backend.core.decision_engine import DecisionEngine
 
 def show_dashboard():
     profile = st.session_state.get("profile")
@@ -60,6 +60,24 @@ def show_dashboard():
         st.write(", ".join(values))
     else:
         st.write("Noch keine Werte angegeben.")
+
+    st.write("---")
+
+    st.subheader("DecisionOS Analyse")
+
+    analysis = DecisionEngine.analyze_profile(profile)
+
+    st.write("**Themenfelder:**")
+    st.write(", ".join(analysis["themes"]))
+
+    st.write("**Arbeitsweisen:**")
+    st.write(", ".join(analysis["work_modes"]))
+
+    st.write("**Werteprofil:**")
+    st.write(", ".join(analysis["value_profile"]))
+
+    st.write("**Unterstützungsbedarf:**")
+    st.write(", ".join(analysis["support_needs"]))
 
     st.write("---")
 
