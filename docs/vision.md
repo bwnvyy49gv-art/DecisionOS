@@ -38,3 +38,5 @@ or
 "Okay, it is not as overwhelming as I thought. I now have a direction I can start developing toward."
 
 DecisionOS should turn uncertainty into a first concrete direction.
+
+Jede Gesellschaft braucht Forscher, Künstler, Handwerker, Unternehmer, Lehrer, Pflegekräfte, Politiker und Ingenieure. DecisionOS hilft nicht dabei, den "besten" Beruf zu finden, sondern den richtigen für den einzelnen Menschen.
